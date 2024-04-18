@@ -131,9 +131,17 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\Bytecode.h" />
+    <ClInclude Include="Includes\BytecodeOperation.h" />
     <ClInclude Include="Includes\Command.h" />
+    <ClInclude Include="Includes\Component.h" />
+    <ClInclude Include="Includes\DoubleBuffer.h" />
+    <ClInclude Include="Includes\EventQueue.h" />
     <ClInclude Include="Includes\FlyWeight.h" />
+    <ClInclude Include="Includes\Observer.h" />
     <ClInclude Include="Includes\Prerrequisites.h" />
+    <ClInclude Include="Includes\State.h" />
+    <ClInclude Include="SubClassSandBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

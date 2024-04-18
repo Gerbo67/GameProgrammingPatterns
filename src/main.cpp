@@ -3,6 +3,11 @@
 #include <FlyWeight.h>
 #include <Observer.h>
 #include <State.h>
+#include <Bytecode.h>
+#include <BytecodeOperation.h>
+#include <Component.h>
+#include <EventQueue.h>
+#include <DoubleBuffer.h>
 
 int main() {
 
@@ -127,5 +132,83 @@ int main() {
 
 #pragma endregion
 
+#pragma region ProfesorBytecode
+
+	BytecodeInterpreter interpreter;
+	vector<Bytecode> bytecode = { JUMP, ATTACK, BLOCK, SPECIAL };
+
+	for (Bytecode bc : bytecode) {
+		interpreter.interpret(bc);
+	}
+
+#pragma endregion
+
+#pragma region ProfesorBytecodeOperation
+
+	unique_ptr<BytecodeOperation> operation = make_unique<GreetingOperation>();
+	unique_ptr<BytecodeOperation> operation2 = make_unique<FarewellOperation>();
+
+	operation->execute();
+	operation2->execute();
+
+#pragma endregion
+
+#pragma region ProfesorComponent
+
+	Entity player;
+	player.addComponent(new RenderComponent());
+	player.addComponent(new PhysicsComponent());
+	player.addComponent(new IAComponent());
+
+	player.initComponent();
+	player.updateComponent();
+	player.renderComponent();
+	player.destroyComponent();
+
+#pragma endregion
+
+#pragma region ProfesorEventQueue
+
+	EventQueue eventQueue;
+
+	eventQueue.pushEvent(Event(Event::KEY_PRESS, 'H'));
+	eventQueue.pushEvent(Event(Event::KEY_PRESS, 'F'));
+	eventQueue.pushEvent(Event(Event::KEY_PRESS, 'G'));
+	eventQueue.pushEvent(Event(Event::KEY_PRESS, 'I'));
+
+	eventQueue.pushEvent(Event(Event::MOUSE_CLICK, 01));
+	eventQueue.pushEvent(Event(Event::MOUSE_CLICK, 02));
+
+	eventQueue.processEvents();
+
+#pragma endregion
+
+#pragma region ProfesorDoubleBuffer
+
+	DoubleBuffer db;
+	db.updateData();
+	db.printActive();
+	db.swapBuffers();
+	db.updateData();
+	db.printActive();
 	return 0;
+
+#pragma endregion
+
+#pragma region FernandoDoubleBuffer
+
+	Game game;
+	game.initializeBuffer();
+	game.updateGameObject();
+	cout << "Objetos en el buffer No1 " << endl;
+	game.printActiveObjects();
+	game.updateGameObject();
+	cout << "Objetos en el buffer No1 actualizados " << endl;
+	game.printActiveObjects();
+	game.swapBuffers();
+	game.updateGameObject();
+	cout << "Objetos en el buffer No2 actualizados " << endl;
+	game.printActiveObjects();
+
+#pragma endregion
 }
