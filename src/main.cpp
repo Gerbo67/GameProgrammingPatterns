@@ -8,6 +8,7 @@
 #include <Component.h>
 #include <EventQueue.h>
 #include <DoubleBuffer.h>
+#include "../SubClassSandBox.h"
 
 int main() {
 
@@ -209,6 +210,15 @@ int main() {
 	game.updateGameObject();
 	cout << "Objetos en el buffer No2 actualizados " << endl;
 	game.printActiveObjects();
+
+#pragma endregion
+
+#pragma region ProfesorSubClassSandBox
+
+	MusicaFondo musica;
+	SFX efecto;
+	musica.reproducir();
+	efecto.reproducir();
 
 #pragma endregion
 }

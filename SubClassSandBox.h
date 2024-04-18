@@ -6,4 +6,17 @@ public:
 	virtual void reproducir() = 0;
 };
 
-// Subclase 
+
+class MusicaFondo : public Sound {
+public:
+	void reproducir() override {
+		cout << "Reproduciendo musica de fondo" << endl;
+	}
+};
+
+class SFX : public Sound {
+public:
+	void reproducir() override {
+		cout << "Reproduciendo fectos de sonido" << endl;
+	}
+};

@@ -35,7 +35,6 @@ private:
 };
 
 //Practica de Double Buffer
-
 class GameObject {
 public:
 	string  name;
